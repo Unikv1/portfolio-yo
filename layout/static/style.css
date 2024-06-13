@@ -1,0 +1,42 @@
+.primary-color {
+    background-color: #1B2432;
+}
+
+.navbar-gradient {
+    background: rgb(18,20,32);
+    background: linear-gradient(90deg, rgba(18,20,32,1) 0%, rgba(64,63,76,1) 35%, rgba(27,36,50,1) 100%);
+}
+
+
+.navbar-button-hover:hover {
+    background-color: white;
+    color: black;
+    border-radius: 9px;
+    transition: border-radius 0.5s linear
+
+}
+
+.border-rounded {
+    border-radius: 3px;
+    color: white;
+    transition: border-radius 0.5s linear
+
+}
+
+.page-title{
+    font-size: 1.5rem;
+}
+
+html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    flex: 1 0 auto;
+  }
+  .footer {
+    flex-shrink: 0;
+  }
