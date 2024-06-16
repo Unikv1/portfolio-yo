@@ -17,7 +17,7 @@ body {
 </style>
 <body>
     <header>
-      <nav class="navbar-gradient navbar navbar-expand-lg">
+      <nav class="primary-color navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="ml-3 d-flex flex-row w-100 justify-content-center align-content-center page-title navbar-brand text-light" href="#">FACUNDO DUEÑAS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,25 +33,24 @@ body {
       </nav>
     </header>
 
-    <main class="content">
+    <main class="content secondary-color">
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer> 
-      <div class="card text-center navbar-gradient">
-        <div class="card-header text-light">
-          Footer
+    <div class="primary-color pt-3">
+      <div class="px-5">
+        <div class="text-light text-center ">
+          My links
+        <div class="divider my-2">
+          <a href="https://github.com/Unikv1" target="_blank"> <img class="svg-hover mx-2" width="50" height="50"  src="{% static 'svg/github-mark-white.svg' %}"/> </a>
+          <a href="https://www.linkedin.com/in/facundo-dueñas" target="_blank"> <img class="svg-hover mx-2 white-filter" width="54" height="54"  src="{% static 'svg/linkedin.svg' %}" /> </a>
+          <a href="mailto:facundoduenas@gmail.com"> <img class="svg-hover mx-2 white-filter" width="50" height="50" src="{% static 'svg/email.svg' %}" /> </a>
+          <a href="https://www.getonbrd.com/p/facundo-manuel-duenas" target="_blank" > <img class="svg-hover mx-2 white-filter" width="50" height="50" src="{% static 'svg/getonbrd.svg' %}" /> </a>
         </div>
-        <div class="card-body text-light">
-          <h5 class="card-title">Something something</h5>
-          <p class="card-text">This button will go somewhere someday heh</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-body-secondary text-light h6">
-          Facundo Dueñas - 2024
-        </div>
+
+        <p class="footer-copyright-text text-light text-center">© 2024 Facundo Dueñas</p>
       </div>  
-    </footer>
+    </div>
 </body>
 </html>

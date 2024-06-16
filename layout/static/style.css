@@ -1,12 +1,10 @@
 .primary-color {
-    background-color: #1B2432;
+    background-color: #1F1F2D;
 }
 
-.navbar-gradient {
-    background: rgb(18,20,32);
-    background: linear-gradient(90deg, rgba(18,20,32,1) 0%, rgba(64,63,76,1) 35%, rgba(27,36,50,1) 100%);
+.secondary-color {
+    background-color: #5D5E76;
 }
-
 
 .navbar-button-hover:hover {
     background-color: white;
@@ -40,3 +38,48 @@ html, body {
   .footer {
     flex-shrink: 0;
   }
+
+.footer-copyright-text {
+    color: white;
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #5D5E76;
+}
+
+.divider:not(:empty)::before {
+  margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: .5em;
+}
+
+.white-filter {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(10deg) brightness(102%) contrast(102%);
+}
+
+.svg-hover {
+  transition : transform 0.2s linear;
+}
+
+.svg-hover:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s linear;
+  
+}
