@@ -83,3 +83,55 @@ hr.solid {
   transition: transform 0.2s linear;
   
 }
+
+#main-container {
+  position: relative;
+}
+
+#main-container canvas, #overlay {
+  position: absolute;
+}
+
+canvas {
+  width: 100%;
+  height: 600px;
+  background-color: #C1C1C1;
+}
+/* 
+.canvas-text {
+  color: black;
+  font-size: 4rem;
+  height: 100%;
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.canvas-text-name {
+  font-size: 4rem;
+  font-weight: 900;
+  height: 100%;
+  width: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #59747B;
+  background-image: -webkit-linear-gradient(92deg, pink, pink);
+  -webkit-background-clip: text;
+  background-clip: text; /* Add the standard property */
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 10s infinite linear;
+  animation: hue 4s infinite linear; /* Add the standard property */
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+} */
