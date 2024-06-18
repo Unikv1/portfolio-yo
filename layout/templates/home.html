@@ -2,15 +2,27 @@
 {% load static %}
 {% block content %}
 
-<div id="main-container">
-    <canvas id="canvas"></canvas>
+<div  class="h-100">
+    <div id="canvas-container" class="d-flex">
+        <canvas id="canvas"></canvas>
 
-    {% comment %} <div class="row d-flex flex-column">
-        <div id="overlay" class="canvas-text">  Hi, I'm </div>
-        <div id="overlay" class="canvas-text-name"><br><br>Facundo Dueñas</div>
-    </div> {% endcomment %}
+        <div id="overlay" class="col canvas-position border">
+            <div class="canvas-text">  Hi, I'm </div>
+        </div>
+        <div id="overlay" class="col canvas-text-name border">
+            Facundo
+        </div>
+        <div id="overlay" class="col canvas-description-position">
+            I have experience working with &nbsp;
+        </div>
+    </div>
 
-    {% comment %} TO DO, add text to the canvas {% endcomment %}
+    <div class="pt-3">
+        <div class="text-title-bold divider bg-red text-light col">
+            My Project History
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}
