@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const grad = ctx.createLinearGradient(0, canvas.height / 2, canvas.width, canvas.height / 2);
-      grad.addColorStop(0, "#C1C1CF");
-      grad.addColorStop(0.5, "#1F1F2D");
-      grad.addColorStop(1, "#C1C1CF");
+      grad.addColorStop(0, "#000000");
+      grad.addColorStop(0.5, "#b0fc2c");
+      grad.addColorStop(1, "#000000");
 
       ctx.globalCompositeOperation = "lighter";
 

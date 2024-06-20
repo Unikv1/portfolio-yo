@@ -118,7 +118,7 @@ hr.solid {
 }
 
 canvas {
-  background-color: #C1C1CF;
+  background-color: black;
   pointer-events: auto;
 }
 
@@ -131,35 +131,56 @@ canvas {
 }
 
 .canvas-text {
-  color: black;
-  text-wrap: nowrap;
+  color: greenyellow;
+  font-family: inconsolata, monospace;
   font-size: 5rem;
   max-height: 100px;
   text-align: center;
   pointer-events: auto;
-
+  white-space: wrap;
+  line-height: 5rem;
+  overflow-wrap: break-word; /* Ensure text wraps within the container */
+  word-break: break-word;
 }
 
-.canvas-text-name {
-  font-weight: bold;
-  font-size: 5rem;
-  max-height: 100px;
-  text-align: start;
-  pointer-events: auto;
-  
-  background-image: -webkit-linear-gradient(92deg, #59747B, magenta);
-  -webkit-background-clip: text;
-  background-clip: text; /* Add the standard property */
-  -webkit-text-fill-color:rgb(212, 24, 187);
-  -webkit-animation: hue 10s infinite linear;
-  animation: hue 4s infinite linear; /* Add the standard property */
-}
 
 .canvas-description-position {
-  font-size: 1.5rem;
+  
+  color: greenyellow;
+  opacity: 0;
+  width: 100%;
   width: 25rem;
+  font-size: 1.5rem;
   text-align: center;
   pointer-events: auto;
+
+  transition: opacity 2s ease;
+}
+
+.canvas-email {
+  opacity: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+  pointer-events: auto;
+  transition: opacity 2s ease;
+}
+
+#animatedText {
+  flex-wrap: wrap;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .canvas-description-position:after {
@@ -170,7 +191,6 @@ canvas {
   text-align: start;
   animation-iteration-count: infinite;
   animation-timing-function: step-end;
-
   font-weight: bolder;
 }
 
@@ -189,7 +209,7 @@ canvas {
   }
   26% {
     opacity: 1;
-    color: #184434;
+    color: #1844FF;
     content: "Django"
   }
   39% {
@@ -214,7 +234,7 @@ canvas {
   }
   87% {
     opacity: 1;
-    color: purple;
+    color: rgb(223, 73, 223);
     content: "Data Reports"
   }
 }
@@ -259,4 +279,38 @@ canvas {
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+
+/* cards stuff */
+.project-card {
+  min-width:300px;
+  max-width: 300px;
+  min-height: 400px;
+  max-height: 400px;
+
+  scale: 1;
+
+  background-color: #1F1F2D;
+  color: white;
+  border: 2px solid #3D4051;
+  transition:  min-width 0.2s ease-in-out, min-height 0.3s linear, max-width 0.2s ease-in-out, max-height 0.3s linear, scale 0.2s ease-in-out;
+
+}
+
+.project-card:hover {
+  scale: 1.05;
+  min-height: 500px;
+  max-height: 500px;
+  transition: min-height 0.2s ease-in-out, max-height 0.3s ease-in-out, scale 0.2s ease-in-out;
+
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    min-width:500px;
+    max-width: 500px;
+    min-height: 500px;
+    max-height: 500px;
+  }
 }
