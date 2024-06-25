@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
               }
           }
       }
-      ctx.lineWidth = 0.1;
+      ctx.lineWidth = 0.05;
       ctx.strokeStyle = grad;
       ctx.stroke();
   }

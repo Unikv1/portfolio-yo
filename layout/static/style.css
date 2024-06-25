@@ -16,6 +16,22 @@
 
 }
 
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1030;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: invisible;
+}
+
+
+
 .border-rounded {
     border-radius: 3px;
     color: white;
@@ -29,6 +45,8 @@
 
 html, body {
     height: 100%;
+    scroll-behavior: smooth;
+    overflow: hidden;
   }
   body {
     display: flex;
@@ -114,7 +132,8 @@ hr.solid {
 
 #canvas-container canvas, #overlay {
   width: 100%;
-  height: 400px;
+  height: calc(100vh - 50px);
+  
 }
 
 canvas {
@@ -133,7 +152,7 @@ canvas {
 .canvas-text {
   color: greenyellow;
   font-family: inconsolata, monospace;
-  font-size: 5rem;
+  font-size: 7rem;;
   max-height: 100px;
   text-align: center;
   pointer-events: auto;
@@ -142,20 +161,37 @@ canvas {
   overflow-wrap: break-word; /* Ensure text wraps within the container */
   word-break: break-word;
 }
+@media (max-width: 768px) {
+  .canvas-text {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+  #canvas-container canvas, #overlay {
+    height: calc(100vh);
+  
+  }
+
+  a.anchor {
+    position: relative;
+    top: -150px;
+    visibility: hidden;
+  }
+}
 
 
 .canvas-description-position {
   
   color: greenyellow;
+  font-family: 'Inconsolata', monospace;
   opacity: 0;
   width: 100%;
   width: 25rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   pointer-events: auto;
 
-  transition: opacity 2s ease;
 }
+
 
 .canvas-email {
   opacity: 0;
@@ -163,7 +199,6 @@ canvas {
   font-size: 1.25rem;
   text-align: center;
   pointer-events: auto;
-  transition: opacity 2s ease;
 }
 
 #animatedText {
@@ -182,64 +217,6 @@ canvas {
   from, to { opacity: 1; }
   50% { opacity: 0; }
 }
-
-.canvas-description-position:after {
-  content: 'Python';
-  font-size: 100%;
-  animation-name: change-letter;
-  animation-duration: 11s;
-  text-align: start;
-  animation-iteration-count: infinite;
-  animation-timing-function: step-end;
-  font-weight: bolder;
-}
-
-@keyframes change-letter {
-  0% {
-    opacity: 1;
-    color:#2596be;
-    font-weight: bold;
-    content: "Python";
-  }
-  13% {
-    opacity: 1;
-    
-    color:#f7e025;
-    content: "Javascript"
-  }
-  26% {
-    opacity: 1;
-    color: #1844FF;
-    content: "Django"
-  }
-  39% {
-    opacity: 1;
-    color: red;
-    content: "AppsScript"
-  }
-  51% {
-    opacity: 1;
-    color: green;
-    content: "Spreadsheets"
-  }
-  64% {
-    opacity: 1;
-    color: #FF5F00;
-    content: "HTML/CSS"
-  }
-  75% {
-    opacity: 1;
-    color: gray;
-    content: "APIs"
-  }
-  87% {
-    opacity: 1;
-    color: rgb(223, 73, 223);
-    content: "Data Reports"
-  }
-}
-
-
 
 @keyframes hue {
   from {
@@ -299,6 +276,30 @@ canvas {
 
 }
 
+.project-div {
+  opacity: 0;
+  overflow: hidden; /* Hide the overflowing content */
+  position: relative;
+  /* Hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  height: calc(88vh);
+}
+
+.skill-div {
+  overflow: hidden; /* Hide the overflowing content */
+  position: relative;
+  /* Hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  height: calc(88vh);
+}
+
+.project-div:hover {
+  overflow-y: scroll;
+  
+}
+
 .project-card:hover {
   scale: 1.05;
   min-height: 500px;
@@ -322,9 +323,115 @@ canvas {
 
 .project-icons{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: end;
+  padding-inline-end: 1rem;
   align-items: end;
 
+}
+
+.language-icons {  
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  padding-inline-start: 1rem;
+  align-items: start;
+
+}
+
+.fadeOutUp {
+  opacity: 1;
+  animation-name: fadeOutUp;
+  -webkit-animation-name: fadeOutUp;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+.fadeInUp {
+  opacity: 1;
+  animation-name: fadeOutUp;
+  -webkit-animation-name: fadeOutUp;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+  opacity: 0
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}
+
+.animatedFadeOutUp {
+  opacity: 1;
+}
+
+.fadeOutUp {
+  opacity: 1;
+  animation-name: fadeOutUp;
+  animation-duration: 0.275s;
+  -webkit-animation-name: fadeOutUp;
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@-webkit-keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
 }
 
 .card-img-top {
@@ -337,8 +444,18 @@ canvas {
 .card-text{
   line-height: auto;
   font-size: 16px;
+  overflow: hidden; /* Hide the overflowing content */
+  position: relative;
+  /* Hide the scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  max-height: 200px;
   color: rgb(117, 117, 129);
   transition: color 0.2s ease-in-out;
+}
+
+.card-text:hover {
+  overflow-y: scroll;
 }
 
 .card-title {
@@ -348,4 +465,70 @@ canvas {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Progress bar stuff */
+
+.progress-holder{
+  position:relative;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:yellowgreen;
+  overflow:hidden;
+}
+.semi-circle{
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 50%;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+.left-block{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #ccc;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+.right-block{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    background: #ccc;
+    border-top-right-radius:50%;
+    border-bottom-right-radius:50%;
+    transform-origin: left center;
+}
+.mask{
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    background: #fff;
+    border-radius: 50%;
+    text-align:center;
+   }
+
+.mask span{
+color: yellowgreen;
+    font-size: 20px;
+    font-family: Arial;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: calc(50% - 16px);
+    left: calc(0px);
+}
+
+input{
+  margin-top:20px;
 }

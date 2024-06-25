@@ -4,7 +4,8 @@
         "pk": 1,
         "fields": {
             "name": "django",
-            "svg": "django.svg"
+            "svg": "django.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -12,7 +13,8 @@
         "pk": 2,
         "fields": {
             "name": "html",
-            "svg": "html.svg"
+            "svg": "html.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -20,7 +22,8 @@
         "pk": 3,
         "fields": {
             "name": "css",
-            "svg": "css.svg"
+            "svg": "css.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -28,7 +31,8 @@
         "pk": 4,
         "fields": {
             "name": "javascript",
-            "svg": "javascript.svg"
+            "svg": "javascript.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -36,7 +40,8 @@
         "pk": 5,
         "fields": {
             "name": "react",
-            "svg": "react.svg"
+            "svg": "react.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -44,7 +49,8 @@
         "pk": 6,
         "fields": {
             "name": "nodejs",
-            "svg": "nodejs.svg"
+            "svg": "nodejs.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -52,7 +58,8 @@
         "pk": 7,
         "fields": {
             "name": "express",
-            "svg": "express.svg"
+            "svg": "express.svg",
+            "expertise_level": 1
         }
     },
     {
@@ -60,7 +67,8 @@
         "pk": 8,
         "fields": {
             "name": "python",
-            "svg": "python.svg"
+            "svg": "python.svg",
+            "expertise_level": 1
         }
     }
 ]

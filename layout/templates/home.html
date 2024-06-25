@@ -13,28 +13,33 @@
                 <div id="animatedText" class="col-md-auto canvas-text mt-4">   </div>
             </div>
             <div class="row justify-content-auto align-self-center justify-content-center  ml-2 pb-4">
-                <div id="canvasDescription" class="canvas-description-position"> I have experience working with </div>
-                <div id="canvasEmail" class="canvas-email text-light">facundoduenas1@gmail.com </div>
+                <div id="experienceElement" class="canvas-description-position"> I have experience working with </div>
+                <div id="experienceElement1" class=" language-icons">  
+                    {% for language in languages %}
+                        <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
+                    {% endfor %}
+                </div>
+                <div id="experienceElement2" class="canvas-email text-light">facundoduenas1@gmail.com </div>
             </div>
         </div>
     </div>
 
     <div class="pt-5">
         <div class="divider-title">
-
-            <h2 class="text-title-bold text-center mt-2 mx-4"> My Project History </h2>
-            
+            <a class="anchor" id="project-list"> </a>
+            <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My Project History </h2>
         </div>
 
-        <div class="container pb-4 pr-0 pl-4">
-            <div class="row w-100 d-flex flex-wrap justify-content-evenly">
+        <div class="container">
+            <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-evenly border">
 
                 {% for project in projects %}
-                    <div class="project-card col-3 card m-2">
+                    <div id="projectCard" class="project-card col-3 card m-2">
                         <img class="card-img-top pb-2" src="{% static project.image %}" />
                         <div class="project-icons">
-                            {% for language in projects.languages %}
-                            <img height="30" width="30" src="{% static '/svg/' %}{{ language.fields.svg }}" />
+
+                            {% for language in project.languages.all %}
+                            <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
                             {% endfor %}
                         </div>
 
@@ -47,6 +52,27 @@
             </div>
         </div>
     </div>
+
+    
+    <div class="pt-5">
+        <div class="divider-title">
+            <a class="anchor" id="skill-list"> </a>
+            <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My skillset </h2>
+        </div>
+
+        <div class="skill-list">
+            <div class="skill-div">
+                {% for language in languages.all %}
+                    <div class="row w-100 d-flex flex-row border">
+                        <img class="ml-2" title="{{ language.name }}" height="60" width="60" src="{% static '/svg/' %}{{ language.svg }}" />
+                    </div>
+                {% endfor %}
+            </div> 
+
+        </div>
+
+    </div>
+
 </div>
 
 
