@@ -1,0 +1,66 @@
+[
+    {
+        "model": "projects.languages",
+        "pk": 1,
+        "fields": {
+            "name": "django",
+            "svg": "django.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 2,
+        "fields": {
+            "name": "html",
+            "svg": "html.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 3,
+        "fields": {
+            "name": "css",
+            "svg": "css.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 4,
+        "fields": {
+            "name": "javascript",
+            "svg": "javascript.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 5,
+        "fields": {
+            "name": "react",
+            "svg": "react.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 6,
+        "fields": {
+            "name": "nodejs",
+            "svg": "nodejs.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 7,
+        "fields": {
+            "name": "express",
+            "svg": "express.svg"
+        }
+    },
+    {
+        "model": "projects.languages",
+        "pk": 8,
+        "fields": {
+            "name": "python",
+            "svg": "python.svg"
+        }
+    }
+]

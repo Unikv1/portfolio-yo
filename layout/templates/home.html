@@ -27,50 +27,23 @@
         </div>
 
         <div class="container pb-4 pr-0 pl-4">
-            <div class="row w-100 d-flex flex-wrap justify-content-center align-items-center align-self-center">
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="row w-100 d-flex flex-wrap justify-content-evenly">
+
+                {% for project in projects %}
+                    <div class="project-card col-3 card m-2">
+                        <img class="card-img-top pb-2" src="{% static project.image %}" />
+                        <div class="project-icons">
+                            {% for language in projects.languages %}
+                            <img height="30" width="30" src="{% static '/svg/' %}{{ language.fields.svg }}" />
+                            {% endfor %}
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-title"> {{ project.title }}</p>
+                            <p class="card-text h-100"> {{ project.description }} </p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="project-card col-3 card m-2">
-                    <div class="card-body">
-                        <h5 class="card-title"> Project 1 </h5>
-                        <p class="card-text text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

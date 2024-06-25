@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'livereload',
     "django_htmx",
+    "projects",
 
 ]
 
