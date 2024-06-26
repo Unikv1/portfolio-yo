@@ -8,6 +8,8 @@ const duration = 1500;
 const steps = textContent.length;
 const stepDuration = duration / steps;
 
+const elements = [textElement, experienceElement, experienceElement1, experienceElement2];
+
 let currentStep = 0;
 
 function updateText() {
@@ -17,15 +19,9 @@ function updateText() {
     setTimeout(updateText, stepDuration);
   } else {
     // After the typing animation is complete, trigger the fade-in
-    experienceElement.classList.add('animated');
-    experienceElement.classList.add('animatedFadeInUp');
-    experienceElement.classList.add('fadeInUp');
-    experienceElement1.classList.add('animated');
-    experienceElement1.classList.add('animatedFadeInUp');
-    experienceElement1.classList.add('fadeInUp');
-    experienceElement2.classList.add('animated');
-    experienceElement2.classList.add('animatedFadeInUp');
-    experienceElement2.classList.add('fadeInUp');
+    experienceElement.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
+    experienceElement1.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
+    experienceElement2.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
     document.getElementById('cursor').classList.add('blinking-cursor');
   }
 }
@@ -33,35 +29,31 @@ function updateText() {
 updateText();
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  function addFadeInClasses() {
+      elements.forEach(element => {
+          element.classList.add('animated', 'animatedFadeInUp', 'fadeInUp');
+          element.classList.remove('animatedFadeOutUp', 'fadeOutUp');
+      });
+  }
 
-// Intersection Observer to hide textElement when projectCard is visible
-const projectCard = document.getElementById('projectCard');
-const observerOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.1 // Adjust the threshold as needed
-};
+  function addFadeOutClasses() {
+      elements.forEach(element => {
+          element.classList.add('animated', 'animatedFadeOutUp', 'fadeOutUp');
+          element.classList.remove('animatedFadeInUp', 'fadeInUp');
+      });
+  }
 
-function handleIntersection(entries, observer) {
-
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting || entry.intersectionRect.top <= 950 && !entry.intersectionRect.top == 0) {
-      console.log(entry.intersectionRect.top)
-      textElement.classList.add('fadeOutUp', 'animatedFadeOutUp');
-      
-      experienceElement.style.display = 'none';
-      experienceElement1.style.display = 'none';
-      experienceElement2.style.display = 'none';
-    } else if (entry.intersectionRect.top > 950 ) {
-      textElement.classList.remove('fadeOutUp', 'animatedFadeOutUp');
-      textElement.classList.add('animated', 'fadeInUp', 'animatedFadeInUp');
-      experienceElement.style.display = 'block';
-      experienceElement1.style.display = 'flex';
-      experienceElement2.style.display = 'block';
-    }
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        console.log(entry.isIntersecting);
+          if (entry.isIntersecting) {
+              addFadeInClasses();
+          } else {
+              addFadeOutClasses();
+          }
+      });
   });
-}
 
-const observer = new IntersectionObserver(handleIntersection, observerOptions);
-observer.observe(projectCard);
+  observer.observe(start);
+});

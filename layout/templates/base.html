@@ -16,7 +16,7 @@ body {
   font-family: 'Libre Franklin';font-size: 22px;
 }
 </style>
-<body>
+<body >
     <header>
       <nav class="primary-color navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -25,7 +25,7 @@ body {
 
           </button>
             <div class="d-flex flex-row navbar-nav ms-auto justify-content-evenly w-100">
-              <a class="navbar-button-hover border-rounded px-2 nav-link active top_button" aria-current="" href="#canvas">Home</a>
+              <a class="navbar-button-hover border-rounded px-2 nav-link active top_button" aria-current="" href="#start">Home</a>
               <a class="navbar-button-hover border-rounded px-2 nav-link" href="#project-list">Projects</a>
               <a class="navbar-button-hover border-rounded px-2 nav-link" href="#skill-list">Skills</a>
               <a class="navbar-button-hover border-rounded px-2 nav-link" href="#">About</a>
@@ -37,7 +37,7 @@ body {
       <img class="svg-hover m-1 white-filter" width="24" height="24" src="{% static 'svg/arrow-up.svg' %}" alt="Scroll to Top"/>
     </a>
     
-    <main class="content secondary-color pt-5"
+    <main class="content secondary-color pt-5">
         {% block content %}
         {% endblock %}
     </main>

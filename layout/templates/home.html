@@ -3,9 +3,9 @@
 {% block content %}
 
 <div  class="h-100">
+    <div id="start" class="row d-flex flex-column" style="visibility: hidden;"> </div>
     <div id="canvas-container" class="d-flex">
         
-
         <canvas id="canvas"></canvas>
         
         <div id="overlay" class="row canvas-position">
@@ -26,13 +26,13 @@
 
     <div class="pt-5">
         <div class="divider-title">
-            <a class="anchor" id="project-list"> </a>
+            <a class="anchor h-100" id="project-list"> </a>
             <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My Project History </h2>
         </div>
-
+        
         <div class="container">
-            <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-evenly border">
-
+            <div id="project_executer" class="col border d-flex flex-column align-self-center" style="visibility: hidden; height: 1px"> </div>
+            <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-center">
                 {% for project in projects %}
                     <div id="projectCard" class="project-card col-3 card m-2">
                         <img class="card-img-top pb-2" src="{% static project.image %}" />
@@ -50,6 +50,7 @@
                     </div>
                 {% endfor %}
             </div>
+            
         </div>
     </div>
 
@@ -57,20 +58,25 @@
     <div class="pt-5">
         <div class="divider-title">
             <a class="anchor" id="skill-list"> </a>
-            <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My skillset </h2>
+            <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My Skill Set </h2>
         </div>
-
-        <div class="skill-list">
-            <div class="skill-div">
-                {% for language in languages.all %}
-                    <div class="row w-100 d-flex flex-row border">
-                        <img class="ml-2" title="{{ language.name }}" height="60" width="60" src="{% static '/svg/' %}{{ language.svg }}" />
-                    </div>
-                {% endfor %}
-            </div> 
-
+        <div class="container">
+            <div class="skill-list ">
+                <div class="skill-div">
+                    <div id="skills_executer" class="col d-flex flex-column align-self-center" style="visibility: hidden; height: 1px"> </div>
+                        {% for language in languages.all %}
+                            <div class="row-sm-3 d-flex flex-row">
+                                <img class="m-3" title="{{ language.name }}" height="60" width="60" src="{% static '/svg/' %}{{ language.svg }}" />
+                                <div class="progress-bar">
+                                    <div class="bar" data-size="{{ language.expertise_level }}">
+                                    <span class="perc"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div> 
+            </div>
         </div>
-
     </div>
 
 </div>

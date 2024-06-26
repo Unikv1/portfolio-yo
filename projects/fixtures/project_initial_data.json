@@ -98,5 +98,107 @@
             "description": "Description for Project 10",
             "languages": [2, 3, 5, 6]
         }
+    },
+    {
+        "model": "projects.project",
+        "pk": 11,
+        "fields": {
+            "image": "/img/projects/project11.jpg",
+            "title": "Project 11",
+            "description": "Description for Project 11",
+            "languages": [1, 2, 3]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 12,
+        "fields": {
+            "image": "/img/projects/project12.jpg",
+            "title": "Project 12",
+            "description": "Description for Project 12",
+            "languages": [4, 5, 6]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 13,
+        "fields": {
+            "image": "/img/projects/project13.jpg",
+            "title": "Project 13",
+            "description": "Description for Project 13",
+            "languages": [7, 8]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 14,
+        "fields": {
+            "image": "/img/projects/project14.jpg",
+            "title": "Project 14",
+            "description": "Description for Project 14",
+            "languages": [1, 3, 5]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 15,
+        "fields": {
+            "image": "/img/projects/project15.jpg",
+            "title": "Project 15",
+            "description": "Description for Project 15",
+            "languages": [2, 4, 6, 8]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 16,
+        "fields": {
+            "image": "/img/projects/project16.jpg",
+            "title": "Project 16",
+            "description": "Description for Project 16",
+            "languages": [1, 7]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 17,
+        "fields": {
+            "image": "/img/projects/project17.jpg",
+            "title": "Project 17",
+            "description": "Description for Project 17",
+            "languages": [3, 5, 8]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 18,
+        "fields": {
+            "image": "/img/projects/project18.jpg",
+            "title": "Project 18",
+            "description": "Description for Project 18",
+            "languages": [2, 4, 6, 7]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 19,
+        "fields": {
+            "image": "/img/projects/project19.jpg",
+            "title": "Project 19",
+            "description": "Description for Project 19",
+            "languages": [1, 3, 8]
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 20,
+        "fields": {
+            "image": "/img/projects/project20.jpg",
+            "title": "Project 20",
+            "description": "Description for Project 20",
+            "languages": [2, 4, 5, 6]
+        }
     }
+
+
 ]

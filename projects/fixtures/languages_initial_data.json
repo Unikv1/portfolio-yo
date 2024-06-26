@@ -5,7 +5,7 @@
         "fields": {
             "name": "django",
             "svg": "django.svg",
-            "expertise_level": 1
+            "expertise_level": 3
         }
     },
     {
@@ -14,7 +14,7 @@
         "fields": {
             "name": "html",
             "svg": "html.svg",
-            "expertise_level": 1
+            "expertise_level": 4
         }
     },
     {
@@ -23,7 +23,7 @@
         "fields": {
             "name": "css",
             "svg": "css.svg",
-            "expertise_level": 1
+            "expertise_level": 4
         }
     },
     {
@@ -32,7 +32,7 @@
         "fields": {
             "name": "javascript",
             "svg": "javascript.svg",
-            "expertise_level": 1
+            "expertise_level": 5
         }
     },
     {
@@ -68,7 +68,7 @@
         "fields": {
             "name": "python",
             "svg": "python.svg",
-            "expertise_level": 1
+            "expertise_level": 5
         }
     }
 ]
