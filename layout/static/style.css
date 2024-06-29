@@ -50,7 +50,6 @@ a.anchor {
 }
 
 html, body {
-    height: 100%;
     scroll-behavior: smooth;
     overflow: hidden;
   }
@@ -138,7 +137,7 @@ hr.solid {
 
 #canvas-container canvas, #overlay {
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 25px);
   
 }
 
@@ -303,6 +302,7 @@ canvas {
   justify-content: center;
   align-items: center;
 }
+
 
 .project-div:hover {
   overflow-y: scroll;

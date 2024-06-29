@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Libre Franklin' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
     {% block extra_css %}{% endblock %}
 </head>
@@ -25,10 +26,10 @@ body {
 
           </button>
             <div class="d-flex flex-row navbar-nav ms-auto justify-content-evenly w-100">
-              <a class="navbar-button-hover border-rounded px-2 nav-link active top_button" aria-current="" href="#start">Home</a>
+              <a class="navbar-button-hover border-rounded px-2 nav-link" id="home" aria-current="" href="#">Home</a>
               <a class="navbar-button-hover border-rounded px-2 nav-link" href="#project-list">Projects</a>
               <a class="navbar-button-hover border-rounded px-2 nav-link" href="#skill-list">Skills</a>
-              <a class="navbar-button-hover border-rounded px-2 nav-link" href="#">About</a>
+              <a class="navbar-button-hover border-rounded px-2 nav-link" href="#bottom_footer">My Links</a>
             </div>
         </div>
       </nav>
@@ -42,7 +43,7 @@ body {
         {% endblock %}
     </main>
 
-    <div class="primary-color pt-3">
+    <div id="bottom_footer" class="primary-color pt-3">
       <div class="px-5">
         <div class="text-light text-center ">
           My links

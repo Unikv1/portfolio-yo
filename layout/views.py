@@ -5,13 +5,23 @@ def base(request):
     return render(request, 'base.html')
 
 def home(request):
-    Projects = Project.get_all_projects()
-    Language_list = Languages.get_all_languages()
-    #left off here
+    all_projects = Project.get_all_projects()
+    all_languages = Languages.get_all_languages()
 
     context = {
-        'projects': Projects,
-        'languages': Language_list
+        'projects': all_projects,
+        'languages': all_languages
     }
 
     return render(request, 'home.html', context=context)
+
+def search(request):
+    language = request.GET.get('language')
+    projects = Project.get_all_projects_by_language(language)
+
+    context = {
+        'projects': projects,
+        'language': language
+    }
+
+    return render(request, 'search.html', context=context)

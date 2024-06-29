@@ -1,5 +1,7 @@
 function appear() {
-    var topButton = document.getElementById("top_button");
+    const topButton = document.getElementById("top_button");
+    const home = document.getElementById("home");
+
     if (document.documentElement.scrollTop > 300) {
       topButton.classList.add('show');
     } else {
@@ -13,3 +15,4 @@ function appear() {
   
   document.addEventListener("scroll", appear);
   document.getElementById("top_button").addEventListener("click", goToTop);
+  document.getElementById("home").addEventListener("click", goToTop);

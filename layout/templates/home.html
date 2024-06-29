@@ -32,23 +32,54 @@
         
         <div class="container">
             <div id="project_executer" class="col border d-flex flex-column align-self-center" style="visibility: hidden; height: 1px"> </div>
+            <div class="row d-flex justify-content-center align-items-center border py-2">
+                {% comment %} <select class="form-select justify-content-center text-center" aria-label="size 3 select example">
+                    <option selected>Filter by language/platform</option>
+                        {% for language in languages.all %}
+                            <a class="dropdown-item">{{ language.name }}</a>
+                            
+                            <option value={{ language.pk }}>{{ language.name }}</option>
+                        {% endfor %}
+                  </select> {% endcomment %}
+
+                  <select class="form-select justify-content-center text-center" type="search" 
+                         name="search" placeholder="Begin Typing To Search Users..." 
+                         hx-post="/search" 
+                         hx-trigger="input changed delay:500ms, search" 
+                         hx-target="#projectCardAnimation" 
+                         hx-indicator=".htmx-indicator">
+                         {% for language in languages.all %}
+                            <a class="dropdown-item">{{ language.name }}</a>
+                            
+                            <option value={{ language.pk }}>{{ language.name }}</option>
+                        {% endfor %}
+                  </select>
+            </div>
             <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-center">
-                {% for project in projects %}
-                    <div id="projectCard" class="project-card col-3 card m-2">
-                        <img class="card-img-top pb-2" src="{% static project.image %}" />
-                        <div class="project-icons">
 
-                            {% for language in project.languages.all %}
-                            <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
-                            {% endfor %}
-                        </div>
+                {% if projects.count > 0  %}
+                    {% for project in projects %}
+                        <div id="projectCard" class="project-card col-3 card m-2">
+                            <img class="card-img-top pb-2" src="{% static project.image %}" />
+                            <div class="project-icons">
 
-                        <div class="card-body">
-                            <p class="card-title"> {{ project.title }}</p>
-                            <p class="card-text h-100"> {{ project.description }} </p>
+                                {% for language in project.languages.all %}
+                                <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
+                                {% endfor %}
+                            </div>
+
+                            <div class="card-body">
+                                <p class="card-title"> {{ project.title }}</p>
+                                <p class="card-text h-100"> {{ project.description }} </p>
+                            </div>
                         </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center">
+                        <p> No projects found </p>
                     </div>
-                {% endfor %}
+                {% endif %}
+                
             </div>
             
         </div>
@@ -78,7 +109,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

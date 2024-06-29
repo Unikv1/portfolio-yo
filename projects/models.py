@@ -9,6 +9,14 @@ class Project(models.Model):
     
     def get_all_projects():
         return Project.objects.all()
+    
+
+    def get_all_projects_by_language(language):
+        query = Project.objects.filter(languages__name=language)
+
+        print(query)
+        return query
+
 
     def __str__(self):
         return self.title
