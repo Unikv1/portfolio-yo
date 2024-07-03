@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from projects.models import Languages, Project
+from django.views.decorators.csrf import csrf_protect
 
 def base(request):
     return render(request, 'base.html')
 
 def home(request):
     all_projects = Project.get_all_projects()
-    all_languages = Languages.get_all_languages()
+    all_languages = Languages.get_all_languages().order_by('name')
 
     context = {
         'projects': all_projects,
@@ -15,13 +16,17 @@ def home(request):
 
     return render(request, 'home.html', context=context)
 
-def search(request):
-    language = request.GET.get('language')
-    projects = Project.get_all_projects_by_language(language)
+
+def search_language(request):
+    language = request.POST.get('search')
+    if language:
+        results = Project.objects.filter(languages__pk__in=[language]).order_by('title')
+
+    else:
+        results = Project.get_all_projects()
 
     context = {
-        'projects': projects,
-        'language': language
-    }
+        'results': results
+    }  
 
-    return render(request, 'search.html', context=context)
+    return render(request, 'partials/search-results.html', context)

@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center align-items-center py-2">
+    <form>
+        {% csrf_token %}
+        <select 
+            class="form-select justify-content-center text-center" 
+            type="search" 
+            name="search"
+            hx-post="{% url 'search-language' %}"  
+            hx-trigger="change delay:200ms, search, load" 
+            hx-target="#results" 
+            hx-indicator=".htmx-indicator">
+                <option value="">All</option>
+                {% for language in languages.all %}
+                    <a class="dropdown-item"> {{ language.name }} </a>
+                    <option value={{ language.pk }}> {{ language.name }} </option>
+                {% endfor %}
+        </select>
+    </form>
+</div>
+<div id="results"> </div>

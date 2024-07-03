@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("htmx:afterSettle", () => {
     const watchDiv = document.getElementById('project_executer');
     const animatedDiv = document.getElementById('projectCardAnimation');
 

@@ -1,0 +1,46 @@
+
+{% load static %}
+
+{% if results %}
+    <form>  
+        <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-center">
+            {% for project in results %}
+            {% csrf_token %}
+                <div id="projectCard" class="project-card col-3 card m-2">
+                    <img class="card-button-1 white-filter border" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" />
+                    <img class="card-img-top pb-2" src="{% static project.image %}" onerror="handleImageError(this, '{% static '/svg/placeholder.svg' %}')"/>
+                    <div class="project-icons">
+
+                        {% for language in project.languages.all %}
+                            <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-title"> {{ project.title }}</p>
+                        <p class="card-text h-100"> {{ project.description }} </p>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="row d-flex justify-content-center">
+                <div class="row-12">
+                    <br>
+                    <br>
+                </div>
+            </div>
+            {% else %}
+                <div class="text-center">
+                    <p> No projects found </p>
+                </div>
+        </div>
+        
+    </form>
+{% endif %}
+<script>
+    function handleImageError(image, placeholderSrc) {
+        image.onerror = null;
+        image.src = placeholderSrc;
+    }
+</script>
+    
