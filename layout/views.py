@@ -30,3 +30,4 @@ def search_language(request):
     }  
 
     return render(request, 'partials/search-results.html', context)
+

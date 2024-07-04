@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="">
+        <div class="container-project mt-4 mb-2 justify-content-center">
+            <div class="row  justify-content-center h-100">
+                <div class="col-4 rounded primary-color">
+                    <div class="col-12 rounded project-description secondary-color">
+                        {{ project.description }}
+                    </div>
+                    <div class="col-12 rounded project-links secondary-color">
+                        Links
+                    </div>
+                    
+                </div>
+                <div class="col-4 rounded primary-color mx-2">
+                    <div class="col-12 rounded secondary-color project-images">
+                        Images
+                    </div>
+                    <div class="col-12 rounded secondary-color  project-image-buttons">
+                        Images Buttons
+                    </div>
+                    <div class="col-12 rounded secondary-color  project-icons">
+                        Technologies used
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

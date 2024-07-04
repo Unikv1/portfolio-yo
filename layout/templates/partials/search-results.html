@@ -29,14 +29,16 @@
                     <br>
                 </div>
             </div>
-            {% else %}
-                <div class="text-center">
-                    <p> No projects found </p>
-                </div>
+
         </div>
         
     </form>
+{% elif results.count == 0 %}
+    <div class="text-center">
+        <p> No projects found </p>
+    </div>
 {% endif %}
+
 <script>
     function handleImageError(image, placeholderSrc) {
         image.onerror = null;
