@@ -198,6 +198,21 @@
             "description": "Description for Project 20",
             "languages": [2, 4, 5, 6]
         }
+    } ,
+    {
+        "model": "projects.project",
+        "pk": 21,
+        "fields": {
+            "image": [
+                "/img/projects/project21.jpg",
+                "/img/projects/project22.jpg",
+                "/img/projects/project23.jpg",
+                "/img/projects/project24.jpg"
+            ],
+            "title": "Project 20",
+            "description": "Description for Project 20",
+            "languages": [2, 4, 5, 6]
+        }
     }
 
 

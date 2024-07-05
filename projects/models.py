@@ -18,6 +18,10 @@ class Project(models.Model):
         return query
 
 
+    def get_all_images():
+        return [project.image for project in Project.objects.all()]
+
+
     def __str__(self):
         return self.title
     

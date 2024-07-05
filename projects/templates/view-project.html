@@ -4,24 +4,26 @@
 
     <div class="">
         <div class="container-project mt-4 mb-2 justify-content-center">
-            <div class="row  justify-content-center h-100">
+            <div class="row justify-content-center">
                 <div class="col-4 rounded primary-color">
-                    <div class="col-12 rounded project-description secondary-color">
-                        {{ project.description }}
+                    <div class="project-title col-12 rounded project-title pt-3">
+                        {{ project.title }}
                     </div>
-                    <div class="col-12 rounded project-links secondary-color">
-                        Links
+                    <div class="col-12 rounded project-description d-flex">
+                        {{ project.description }}
                     </div>
                     
                 </div>
-                <div class="col-4 rounded primary-color mx-2">
-                    <div class="col-12 rounded secondary-color project-images">
-                        Images
+                <div class="col-5 rounded primary-color mx-2">
+                    <div class="col-12 rounded secondary-color project-images my-2">
+                        Image
                     </div>
-                    <div class="col-12 rounded secondary-color  project-image-buttons">
-                        Images Buttons
+                    <div id="image_buttons" class="rounded secondary-color project-image-buttons justify-content-start">
+                        {% for image in project.get_all_images %}
+                            {{image}}
+                        {% endfor %}
                     </div>
-                    <div class="col-12 rounded secondary-color  project-icons">
+                    <div class="col-12 rounded secondary-color  project-icons my-2">
                         Technologies used
                     </div>
                 </div>
