@@ -601,7 +601,7 @@ canvas {
   margin-top: 0.75rem;
   height: 89%;
   color: black;
-  background-color: rgb(224, 224, 224);
+  background-color: #777797;
   font-size: 1.25rem;
   font-family: 'Libre Franklin', monospace;
   text-align: justify;
@@ -630,6 +630,34 @@ canvas {
   overflow-y: hidden;
   overflow-x: hidden;
   white-space: nowrap;
+
+}
+
+.image-background {
+  background-color: #777797;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 128px;
+  margin-inline: 0.5rem;
+  border-radius: 5px;
+}
+
+/* CSS for the images */
+.project-image-list-item {
+  max-width: 128px;
+  max-height: 128px;
+  width: auto;
+  height: auto;
+}
+
+.project-image {
+  max-width: 98%;
+  max-height: 98%;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
 
 }
 

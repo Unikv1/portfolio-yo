@@ -2,7 +2,6 @@ from django.db import models
 
 # Createyour models here.
 class Project(models.Model):
-    image = models.CharField(max_length=100, default="placeholder.svg")
     title = models.CharField(max_length=100)
     description = models.TextField()
     languages = models.ManyToManyField('Languages', related_name='languages')
@@ -35,3 +34,7 @@ class Languages(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)

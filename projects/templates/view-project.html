@@ -16,11 +16,16 @@
                 </div>
                 <div class="col-5 rounded primary-color mx-2">
                     <div class="col-12 rounded secondary-color project-images my-2">
-                        Image
+                        
+                        <img class="project-image" src="{{ images.first.image.url }}">
                     </div>
                     <div id="image_buttons" class="rounded secondary-color project-image-buttons justify-content-start">
-                        {% for image in project.get_all_images %}
-                            {{image}}
+                        {% for image in images %}
+                            {% if image.exists %}
+                            <div class="image-background">
+                                <img class="project-image-list-item" src="{{ image.image.url }}">
+                            </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                     <div class="col-12 rounded secondary-color  project-icons my-2">
