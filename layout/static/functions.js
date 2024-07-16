@@ -33,3 +33,33 @@ function displayImage(image) {
 
     $('<style>').text(beforeStyle).appendTo('head');
 }
+
+function changeImageFullscreen(image) {
+    const image_target = image.src;
+    displayed_image_fullscreen.src = image_target;
+}
+
+function displayImageFullscreen(image) {
+    const image_target = image.src;
+    const displayed_image_fullscreen = document.getElementById("project-image-displayed-fullscreen");
+    const fullscreen_image_container = document.getElementById("fullscreen_container");
+
+    displayed_image_fullscreen.src = image_target;
+    fullscreen_image_container.classList.remove("hidden");
+    fullscreen_image_container.classList.add("show");
+
+    console.log("Clicked!");
+}
+
+
+document.getElementById("fullscreen_container").addEventListener("click", function(event) {
+    const fullscreen_image_container = document.getElementById("fullscreen_container");
+    const displayed_image_fullscreen = document.getElementById("project-image-displayed-fullscreen");
+
+    // Check if the click target is not the fullscreen image itself
+    console.log(event.target.id, displayed_image_fullscreen.id);
+    if (event.target.id !== displayed_image_fullscreen.id) {
+        fullscreen_image_container.classList.remove("show");
+        fullscreen_image_container.classList.add("hidden");
+    }
+});

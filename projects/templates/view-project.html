@@ -2,49 +2,29 @@
 {% load static %}
 {% block content %}
 
-    {% comment %} <div class="">
-        <div class="container-project mt-4 mb-2 justify-content-center  d-flex">
-            <div class="row justify-content-center">
-                <div class="col-4 rounded primary-color">
-                    <div class="project-title col-12 rounded project-title pt-3">
-                        {{ project.title }}
-                    </div>
-                    <div class="col-12 rounded project-description d-flex">
-                        {{ project.description }}
-                    </div>
-                    
-                </div>
-                <div class="col-5 rounded primary-color mx-2">
-                    <div class="col-12 rounded secondary-color project-images my-2">
-                        <img id="project-image-displayed" class="project-image"  src="{{ images.first.image.url }}">
-                    </div>
-                    <div id="image_buttons" class="rounded secondary-color project-image-buttons justify-content-start">
-                        {% for image in images %}
-                            {% if image.exists %}
-                            <div class="image-background" style="cursor: pointer;">
-                                <img class="project-image-list-item" src="{{ image.image.url }}" onclick="displayImage(this)">
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="col-12 rounded secondary-color  project-icons my-2">
-                        {% for language in project.languages.all %}
-                            <div class="rounded-background mx-2 d-flex">
-                                <img class="svg-hover" title="{{ language.name }}" height="56" width="56" src="{% static '/svg/' %}{{ language.svg }}" />
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
+<div id="fullscreen_container" class="image-fullscreen-view ">
+    <div class="fullscreen-image ">
+        <img id="project-image-displayed-fullscreen" class="w-50 justify-content-center"  src="{{ images.first.image.url }}">         
+    </div>   
+    <div id="image_buttons" class="project-big-image-carousel-fullscreen rounded-5 ">
+        {% for image in images %}
+            {% if image.exists %}
+            <div class="image-background" style="cursor: pointer;">
+                <img class="project-image-list-item" src="{{ image.image.url }}" onclick="changeImageFullscreen(this)">
             </div>
-        </div>
-    </div> {% endcomment %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 
-<div class="container-view-project d-flex flex-row">
-    <div class="col-md-10 h-100 px-4 pr-0 mb-2 pt-2 justify-content-center border rounded primary-color">
-        <div class="row project-big-image-container p-0 border rounded secondary-color">
-            <img id="project-image-displayed" class="project-big-image  p-0"  src="{{ images.first.image.url }}">
+<div class="container-view-project">
+
+
+    <div class="project-box rounded primary-color border-grey">
+        <div class="project-big-image-container border-grey rounded secondary-color d-flex">
+            <img id="project-image-displayed" class="project-big-image "  src="{{ images.first.image.url }}" onclick="displayImageFullscreen(this)">
             
-            <div id="image_buttons" class="col-md-5 project-big-image-carousel">
+            <div id="image_buttons" class="project-big-image-carousel col-md-5 rounded-5">
                 {% for image in images %}
                     {% if image.exists %}
                     <div class="image-background" style="cursor: pointer;">
@@ -54,22 +34,22 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="d-flex">
-            <div class="row-3 w-100 text-light pt-2 mt-2 mr-2 border">
+        <div class=" d-flex">
+            <div class="project-title">
                 <h2> {{ project.title }}</h2>
             </div>
-            <div class="row-6 w-100 border pt-2 mt-2 mr-2">
-
-            </div>
         </div>
-        <p class="row text-light px-2 border rounded project-view-description">
+        <p class="project-view-description border-grey px-2 rounded ">
             {{ project.description }}
         </p>
+        <div class="w-100 rounded-5 d-flex flex-fill justify-content-center align-items-center">
+            {% for language in project.languages.all %}
+                <div class="svg-circle border-grey mx-2 d-flex secondary-color align-items-center justify-content-center p-3">
+                    <img class="svg-hover" title="{{ language.name }}" height="56" width="56" src="{% static '/svg/' %}{{ language.svg }}" />
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-
-<div class="image-fullscreen-view">
-
 </div>
 
 

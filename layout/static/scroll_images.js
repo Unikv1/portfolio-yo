@@ -22,4 +22,4 @@ scrollableDiv.addEventListener('mouseover', (e) => {
 
 scrollableDiv.addEventListener('mouseleave', () => {
     clearInterval(scrollingInterval);
-});
+}); 
