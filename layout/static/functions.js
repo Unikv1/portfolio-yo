@@ -6,7 +6,7 @@ function displayImage(image) {
     const image_target = image.src;
     displayed_image.src = image_target;
     var beforeStyle = `
-        .project-images::before {
+        .project-big-image-container::before {
             content: "";
             position: absolute;
             width: 100%;
@@ -24,6 +24,11 @@ function displayImage(image) {
             -o-transform: scale(1.2, 1.2);
             -ms-transform: scale(1.2, 1.2);
             transform: scale(1.2, 1.2);
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            max-height: 496px;
+            max-width: 100%;
         }`;
 
     $('<style>').text(beforeStyle).appendTo('head');

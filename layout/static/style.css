@@ -54,6 +54,7 @@ a.anchor {
 html, body {
     scroll-behavior: smooth;
     overflow: hidden;
+    overflow-x: hidden;
   }
   body {
     display: flex;
@@ -65,6 +66,16 @@ html, body {
   .footer {
     flex-shrink: 0;
   }
+
+@media (max-width: 992px) {
+  html {
+    scroll-behavior: smooth;
+    overflow: scroll;
+  }
+  body {
+    overflow: scroll;
+  }
+}
 
 .footer-copyright-text {
     color: white;
@@ -637,7 +648,7 @@ canvas {
 }
 
 .image-background {
-  background-color: #777797;
+  background-color: #adadad48;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -687,3 +698,104 @@ canvas {
   border-radius: 10px;
 }
 
+
+.container-view-project {
+  width: 100%;
+
+  height: 100%;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .container-view-project {
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .project-big-image-carousel {
+    height: 64px;
+    max-height: 64px;
+    margin-bottom: 0;
+  }
+  .project-big-image {
+    max-height: 96px;
+  }
+  .image-background {
+    width: 64px;
+    height: 64px;
+  }
+  .project-image-list-item {
+    max-width: 64px;
+    max-height: 64px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container-view-project {
+    margin-bottom: 0;
+    padding-top: 60px;
+  }
+  
+  .project-view-description {
+    height: 100%;
+    padding: 1rem;
+  }
+}
+
+.project-big-image-container {
+  width: 100%;
+  min-height: 256px;
+  max-height: 450px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Ensure content stays within the container */
+}
+
+.project-big-image {
+  width: auto;
+  height: auto;
+  min-height: 356px;
+  max-height: 450px;
+  display: block; /* Ensure the image is block-level to contain the carousel */
+  margin: 0 auto; /* Center the image horizontally */
+  position: relative; /* Establish a containing block for the carousel */
+}
+.project-big-image-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+  overflow: hidden;
+  position: absolute; /* Changed from relative to absolute */
+  bottom: -100px; /* Position it at the bottom of the container */
+  width: 39rem; /* Ensure the carousel spans the full width of the container */
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  transition: opacity 0.2s ease-in-out, bottom 0.2s ease-in-out;
+}
+
+.project-big-image-carousel:hover {
+  opacity: 1;
+  bottom: 0;
+  transition: opacity 0.2s ease-in-out, bottom 0.2s ease-in-out;
+
+}
+
+.project-view-description {
+  justify-content: start;
+  align-items: start;
+  margin-top: 0.75rem;
+  margin-right: 0.75rem;
+  margin-left: -0.75rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  height: 100%;
+  color: rgb(255, 255, 255);
+  background-color: #5D5E76;
+  font-size: 1.25rem;
+  font-family: 'Roboto', monospace;
+  padding: 1rem;
+  min-height: 230px;
+  max-height: 330px;
+}
