@@ -26,10 +26,15 @@ body {
 
           </button>
             <div class="d-flex flex-row navbar-nav ms-auto justify-content-evenly w-100">
-              <a class="navbar-button-hover border-rounded px-2 nav-link" id="home" aria-current="" href="#">Home</a>
-              <a class="navbar-button-hover border-rounded px-2 nav-link" href="#project-list">Projects</a>
-              <a class="navbar-button-hover border-rounded px-2 nav-link" href="#skill-list">Skills</a>
-              <a class="navbar-button-hover border-rounded px-2 nav-link" href="#bottom_footer">Links</a>
+              {% if request.get_full_path == '/' %}
+                <a class="navbar-button-hover border-rounded px-2 nav-link" id="home" aria-current="" href="#">Home</a>
+                <a class="navbar-button-hover border-rounded px-2 nav-link" href="#project-list">Projects</a>
+                <a class="navbar-button-hover border-rounded px-2 nav-link" href="#skill-list">Skills</a>
+                <a class="navbar-button-hover border-rounded px-2 nav-link" href="#bottom_footer">Links</a>
+              {% else %}
+                <a class="navbar-button-hover border-rounded px-2 nav-link" id="home" aria-current="" href="/">Home</a>
+                <a class="navbar-button-hover border-rounded px-2 nav-link" href="#bottom_footer">Links</a>
+              {% endif %}
             </div>
         </div>
       </nav>

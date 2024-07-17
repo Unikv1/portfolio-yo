@@ -1,28 +1,50 @@
-// Create a file called zoom.js and add the following code
 $(document).ready(function() {
-    $('.project-images').on('mousemove', function(e) {
-        var $this = $(this),
-            $img = $this.find('.project-image'),
-            offset = $img.offset(),
-            mouseX = e.pageX - offset.left,
-            mouseY = e.pageY - offset.top;
+    var isZoomed = false;
+    $(this).find('.project-image').css('cursor', 'zoom-in');
 
-        var imgWidth = $img.width(),
-            imgHeight = $img.height(),
-            moveX = (mouseX / imgWidth * 100),
-            moveY = (mouseY / imgHeight * 100);
 
-        $img.css({
-            'transform': 'scale(1.5)',
-            'transform-origin': moveX + '% ' + moveY + '%'
-        });
+    $('.fullscreen-image').on('click', function() {
+        var $img = $(this).find('.project-image');
+        if (isZoomed) {
+            $img.css({
+                'transform': 'scale(1)',
+                'transform-origin': 'center center',
+                'cursor': 'zoom-in'
+            });
+        } else {
+            $img.css({'cursor': 'zoom-out',
+                'transform': 'scale(2)',
+                
+            });
+        }
+        isZoomed = !isZoomed;
     });
 
-    $('.project-images').on('mouseleave', function() {
+    $('.fullscreen-image').on('mousemove', function(e) {
+        if (isZoomed) {
+            var $img = $(this).find('.project-image'),
+                offset = $img.offset(),
+                mouseX = e.pageX - offset.left,
+                mouseY = e.pageY - offset.top,
+                moveX = 50,
+                moveY = (mouseY / $img.height() * 50);
+
+            $img.css({
+                'transform': 'scale(2)',
+                'transform-origin': moveX + '% ' + moveY + '%'
+            });
+        }
+    });
+
+    $('.fullscreen-image').on('mouseleave', function() {
         var $img = $(this).find('.project-image');
-        $img.css({
-            'transform': 'scale(1)',
-            'transform-origin': 'center center'
-        });
+        if (isZoomed) {
+            $img.css({
+                'transform': 'scale(1)',
+                'transform-origin': 'center center',
+                'cursor': 'zoom-in'
+            });
+            isZoomed = false;
+        }
     });
 });

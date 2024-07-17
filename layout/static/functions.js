@@ -1,10 +1,15 @@
 const displayed_image = document.getElementById("project-image-displayed");
+const displayed_image_fullscreen = document.getElementById("project-image-displayed-fullscreen");
+const fullscreen_image_container = document.getElementById("fullscreen_container");
+const fullscreen_carousel = document.getElementById("project-big-image-carousel-fullscreen");
 
 $(document).ready(function() { displayImage(document.getElementById("project-image-displayed")); });
 
 function displayImage(image) {
     const image_target = image.src;
     displayed_image.src = image_target;
+    displayed_image_fullscreen.src = image_target;
+
     var beforeStyle = `
         .project-big-image-container::before {
             content: "";
@@ -41,8 +46,6 @@ function changeImageFullscreen(image) {
 
 function displayImageFullscreen(image) {
     const image_target = image.src;
-    const displayed_image_fullscreen = document.getElementById("project-image-displayed-fullscreen");
-    const fullscreen_image_container = document.getElementById("fullscreen_container");
 
     displayed_image_fullscreen.src = image_target;
     fullscreen_image_container.classList.remove("hidden");
@@ -53,12 +56,9 @@ function displayImageFullscreen(image) {
 
 
 document.getElementById("fullscreen_container").addEventListener("click", function(event) {
-    const fullscreen_image_container = document.getElementById("fullscreen_container");
-    const displayed_image_fullscreen = document.getElementById("project-image-displayed-fullscreen");
-
     // Check if the click target is not the fullscreen image itself
     console.log(event.target.id, displayed_image_fullscreen.id);
-    if (event.target.id !== displayed_image_fullscreen.id) {
+    if (event.target.id === fullscreen_image_container.id ) {
         fullscreen_image_container.classList.remove("show");
         fullscreen_image_container.classList.add("hidden");
     }

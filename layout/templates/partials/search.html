@@ -2,7 +2,8 @@
     <form>
         {% csrf_token %}
         <select 
-            class="form-select justify-content-center text-center" 
+            class="form-select justify-content-center text-center border-0 primary-color text-light"
+            style="font-size: 1.5rem;" 
             type="search" 
             name="search"
             hx-post="{% url 'search-language' %}"  

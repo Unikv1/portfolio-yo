@@ -7,8 +7,8 @@
             {% for project in results %}
             {% csrf_token %}
                 <div id="projectCard" class="project-card col-3 card m-2">
-                    <img class="card-button-1 white-filter border" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" />
-                    <img class="card-img-top pb-2" src="{% static project.image %}" onerror="handleImageError(this, '{% static '/svg/placeholder.svg' %}')"/>
+                    <a href="/project/{{project.id}}" style="cursor: pointer;"><img class="card-button-1 white-filter border" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" /></a>
+                    <img class="card-img-top pb-2" src="{{ 'media/images/project_'}}{{project.id}}_01.jpg" onerror="handleImageError(this, '{% static '/svg/placeholder.svg' %}')"/>
                     <div class="project-icons">
 
                         {% for language in project.languages.all %}
@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="card-body">
-                        <p class="card-title"> {{ project.title }}</p>
+                        <p class="card-title pt-0 mt-0 justify-content-start align-items-end d-flex" > {{ project.title }}</p>
                         <p class="card-text h-100"> {{ project.description }} </p>
                         
                     </div>

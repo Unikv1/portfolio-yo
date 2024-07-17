@@ -59,6 +59,7 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
+
   }
   .content {
     flex: 1 0 auto;
@@ -347,8 +348,9 @@ canvas {
 
 .project-card:hover {
   scale: 1.05;
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 450px;
+  max-height: 450px;
+
   transition: min-height 0.2s ease-in-out, max-height 0.3s ease-in-out, scale 0.2s ease-in-out;
   .card-text { 
     color: white;
@@ -359,6 +361,7 @@ canvas {
     transition: opacity 0.2s linear;
   
   }
+
 
 }
 
@@ -628,7 +631,7 @@ canvas {
 
 .container-view-project {
   width: 100%;
-  height: 100%;
+  height: 88vh;
   display: flex;
 
   margin-top: 2rem;
@@ -642,7 +645,6 @@ canvas {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   justify-content: center;
-  height: 100% ;
 }
 
 @media (max-width: 768px) {
@@ -668,7 +670,8 @@ canvas {
     max-height: 64px;
   }
   .project-box {
-    width: 99%
+    width: 99%;
+    height: 90%;
   }
 }
 
@@ -679,8 +682,14 @@ canvas {
   }
   
   .project-view-description {
-    height: 100%;
     padding: 1rem;
+    max-height: 20%;
+  }
+
+  .project-box {
+    width: 99%;
+    height: 90%;
+  
   }
 }
 
@@ -712,8 +721,16 @@ canvas {
   bottom: -100px; /* Position it at the bottom of the container */
   width: 39rem; /* Ensure the carousel spans the full width of the container */
   opacity: 0.5;
-  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  margin-bottom: 2rem;
+  justify-content: start;
   transition: opacity 0.2s ease-in-out, bottom 0.2s ease-in-out;
+}
+@media (max-width: 768px) {
+  .project-big-image-carousel {
+    bottom: -40px;
+  }
 }
 
 .project-big-image-carousel:hover {
@@ -724,6 +741,7 @@ canvas {
 }
 
 .project-view-description {
+  display: flex;
   justify-content: start;
   align-items: start;
   margin-top: 0.75rem;
@@ -733,11 +751,15 @@ canvas {
   background-color: #5D5E76;
   font-size: 1.25rem;
   font-family: 'Roboto', monospace;
-  min-height: 200px;
-  max-height: 300px;
   overflow: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
+}
+@media (max-width: 768px) {
+  .project-view-description {
+    max-height: 26%;
+  }
+  
 }
 
 .project-view-description:hover {
@@ -758,7 +780,7 @@ canvas {
 }
 
 .image-fullscreen-view {
-  display: none; /* Change visibility to display */
+  display: none; /* Hide by default */
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -773,6 +795,12 @@ canvas {
 
 .image-fullscreen-view.show {
   display: flex; /* Show the fullscreen view */
+  opacity: 1; /* Fully visible */
+}
+
+.image-fullscreen-view.hidden {
+  display: none; /* Show the fullscreen view */
+  opacity: 0; /* Fully visible */
 }
 
 .project-big-image-carousel-fullscreen {
@@ -807,4 +835,14 @@ canvas {
   align-items: center;
   background-color: #1F1F2D;
   border-radius: 10px;
+  min-height: 70vh;
+  overflow: hidden;
+}
+
+img {
+  max-height: 100%;
+}
+
+.project-image {
+  transition: transform 0.2s ease-in-out;
 }

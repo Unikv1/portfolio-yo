@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from projects.models import Languages, Project
+from projects.models import Languages, Project, Image
 from django.views.decorators.csrf import csrf_protect
 
 def base(request):
@@ -8,10 +8,11 @@ def base(request):
 def home(request):
     all_projects = Project.get_all_projects()
     all_languages = Languages.get_all_languages().order_by('name')
-
+    all_images = Image.get_all_images()
     context = {
         'projects': all_projects,
-        'languages': all_languages
+        'languages': all_languages,
+        'images': all_images
     }
 
     return render(request, 'home.html', context=context)

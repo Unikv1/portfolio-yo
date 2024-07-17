@@ -38,3 +38,9 @@ class Languages(models.Model):
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+    def get_all_images():
+        return Image.objects.all()
+
+    def get_image_by_project(project):
+        return Image.objects.filter(project=project)
