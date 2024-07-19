@@ -7,7 +7,7 @@
             {% for project in results %}
             {% csrf_token %}
                 <div id="projectCard" class="project-card col-3 card m-2">
-                    <a href="/project/{{project.id}}" style="cursor: pointer;"><img class="card-button-1 white-filter border" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" /></a>
+                    <a href="/project/{{project.id}}" style="cursor: pointer;"><img class="card-button-1 white-filter" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" /></a>
                     <img class="card-img-top pb-2" src="{{ 'media/images/project_'}}{{project.id}}_01.jpg" onerror="handleImageError(this, '{% static '/svg/placeholder.svg' %}')"/>
                     <div class="project-icons">
 
@@ -23,6 +23,9 @@
                     </div>
                 </div>
             {% endfor %}
+            <div id="projectCard" class="project-card-2 secondary-color col-3 card m-2">
+                <img class="card-button-2 white-filter" title="" height="64" width="64" src="{% static '/svg/file-plus.svg' %}" />
+            </div>
             <div class="row d-flex justify-content-center">
                 <div class="row-12">
                     <br>

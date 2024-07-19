@@ -9,17 +9,17 @@
         <canvas id="canvas"></canvas>
         
         <div id="overlay" class="row canvas-position">
-            <div class="row justify-content-center d-flex align-self-center ml-2">
-                <div id="animatedText" class="col-md-auto canvas-text mt-4">   </div>
+            <div class="row justify-content-center d-flex align-self-center ml-2 unselectable">
+                <div id="animatedText" class="col-md-auto canvas-text mt-4 unselectable">   </div>
             </div>
             <div class="row justify-content-auto align-self-center justify-content-center  ml-2 pb-4">
-                <div id="experienceElement" class="canvas-description-position"> I have experience working with </div>
-                <div id="experienceElement1" class=" language-icons">  
+                <div id="experienceElement" class="canvas-description-position unselectable"> I have experience working with </div>
+                <div id="experienceElement1" class=" language-icons  unselectable">  
                     {% for language in languages %}
                         <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
                     {% endfor %}
                 </div>
-                <div id="experienceElement2" class="canvas-email text-light">facundoduenas1@gmail.com </div>
+                <a href="mailto:facundoduenas1@gmail.com" style=" text-decoration: none;"><div id="experienceElement2" class="canvas-email text-light">facundoduenas1@gmail.com </div></a>
             </div>
         </div>
     </div>

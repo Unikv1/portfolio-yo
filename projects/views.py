@@ -15,3 +15,4 @@ def view_project(request, project_id):
         'images': images
     }
     return render(request, 'view-project.html', context)
+
