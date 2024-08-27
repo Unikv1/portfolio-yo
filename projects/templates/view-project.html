@@ -4,53 +4,74 @@
 
 <div id="fullscreen_container" class="image-fullscreen-view ">
     <div class="fullscreen-image ">
-        <img id="project-image-displayed-fullscreen" class="project-image justify-content-center"  src="{{ images.first.image.url }}">         
+        <img id="project-image-displayed-fullscreen" class="project-image justify-content-center"  src="{{ first_image }}">         
     </div>   
-    <div id="image_buttons" class="project-big-image-carousel-fullscreen rounded-5 ">
+    <div id="image_buttons_2" class="project-big-image-carousel-fullscreen">
         {% for image in images %}
-            {% if image.exists %}
-            <div class="image-background" style="cursor: pointer;">
-                <img class="project-image-list-item" src="{{ image.image.url }}" onclick="changeImageFullscreen(this)">
+            <div style="cursor: pointer;">
+                <img class="project-image-list-item" src="{{ image }}" onclick="displayImageFullscreen(this)">
             </div>
-            {% endif %}
         {% endfor %}
     </div>
 </div>
+<div id="project-container" class="view-project-container">
+    <div class="view-project-content">
 
-<div class="container-view-project">
-
-
-    <div class="project-box rounded primary-color border-grey">
-        <div class="project-big-image-container border-grey rounded secondary-color d-flex">
-            <img id="project-image-displayed" class="project-big-image"  src="{{ images.first.image.url }}" onclick="displayImageFullscreen(this)">
-            
-            <div id="image_buttons_2" class="project-big-image-carousel col-md-5 rounded-5">
+        <div class="view-project-image">
+            <img style="cursor: pointer;" src="{{ first_image }}" alt="" onclick="displayImageFullscreen(this)">
+            <div id="image_buttons_2" class="project-big-image-carousel">
                 {% for image in images %}
-                    {% if image.exists %}
-                    <div class="image-background" style="cursor: pointer;">
-                        <img class="project-image-list-item" src="{{ image.image.url }}" onclick="displayImage(this)">
+                    <div style="cursor: pointer;">
+                        <img class="project-image-list-item" src="{{ image }}" onclick="displayImage(this)">
                     </div>
-                    {% endif %}
                 {% endfor %}
             </div>
         </div>
-        <div class=" d-flex">
-            <div class="project-title">
-                <h2> {{ project.title }}</h2>
-            </div>
+
+        <div class="view-project-title">
+            {{ project.title }}
         </div>
-        <div class="project-view-description border-grey px-2 rounded ">
+
+        <div class="view-project-description">
             {{ project.description }}
         </div>
-        <div class="w-100 rounded-5 pt-3 d-flex flex-fill justify-content-center align-items-center">
-            {% for language in project.languages.all %}
-                <div class="svg-circle border-grey mx-2 d-flex secondary-color align-items-center justify-content-center p-3">
-                    <img class="svg-hover" title="{{ language.name }}" height="56" width="56" src="{% static '/svg/' %}{{ language.svg }}" />
-                </div>
-            {% endfor %}
-        </div>
+
     </div>
 </div>
+
+<div class="go-back-button">
+    <a href="/#project-list" class="btn primary-color">
+        <img class="svg-hover m-1 white-filter" width="32" height="32" src="{% static 'svg/arrow-left.svg' %}" alt="Go back"/>
+    </a>
+</div>
+
+<style>
+    .view-project-image {
+        position: relative;
+        z-index: 1;
+    }
+
+    .view-project-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: var(--bg-image, url('{{ first_image|safe }}'));
+        background-size: cover;
+        background-position: center;
+        filter: blur(5px);
+        z-index: -1;
+    }
+
+    .view-project-image img {
+        position: relative;
+        z-index: 2;
+        width: 80%;
+        object-fit: contain;
+    }
+</style>
 
 
 {% endblock %}

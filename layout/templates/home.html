@@ -2,7 +2,11 @@
 {% load static %}
 {% block content %}
 
-<div  class="h-100">
+<script src="{% static 'connecting_dots.js' %}"></script>
+<script src="{% static 'animate_text.js' %}"></script>
+<script src="{% static 'animate_cards.js' %}"></script>
+<script src="{% static 'animate_bars.js' %}"></script>
+<div  class="">
     <div id="start" class="row d-flex flex-column" style="visibility: hidden;"> </div>
     <div id="canvas-container" class="d-flex">
         
@@ -10,9 +14,9 @@
         
         <div id="overlay" class="row canvas-position">
             <div class="row justify-content-center d-flex align-self-center ml-2 unselectable">
-                <div id="animatedText" class="col-md-auto canvas-text mt-4 unselectable">   </div>
+                <div id="animatedText" class="col-md-auto canvas-text unselectable" style="margin-top:100px;">   </div>
             </div>
-            <div class="row justify-content-auto align-self-center justify-content-center  ml-2 pb-4">
+            <div class="row justify-content-auto align-self-center justify-content-center  ml-2 pb-4" style="margin-bottom:100px;">
                 <div id="experienceElement" class="canvas-description-position unselectable"> I have experience working with </div>
                 <div id="experienceElement1" class=" language-icons  unselectable">  
                     {% for language in languages %}
@@ -29,45 +33,29 @@
             <a class="anchor h-100" id="project-list"> </a>
             <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My Project History </h2>
         </div>
-        
-        <div class="container">
-            <div id="project_executer" class="col d-flex flex-column align-self-center" style="visibility: hidden; height: 1px"> </div>
-            <section>
-                {% include 'partials/search.html' %}
-            </section>
-            
-            <section>
-                {% include 'partials/search-results.html' %}
-            </section>
 
-        </div>
     </div>
+            
+    {% include 'partials/search.html' %}
 
+    <div class="projects-container">
+        <div id="project_executer" class="" style="visibility: hidden; height: 1px"> </div>
+        {% include 'partials/search-results.html' %}
+    </div>
     
     <div class="pt-5">
         <div class="divider-title">
             <a class="anchor" id="skill-list"> </a>
             <h2 id="projects_title" class="text-title-bold text-center mt-2 mx-4"> My Skill Set </h2>
         </div>
-        <div class="container">
-            <div class="skill-list ">
-                <div class="skill-div">
-                    <div id="skills_executer" class="col d-flex flex-column align-self-center" style="visibility: hidden; height: 1px"> </div>
-                        {% for language in languages.all %}
-                            <div class="row-sm-3 d-flex flex-row">
-                                <img class="m-3" title="{{ language.name }}" height="60" width="60" src="{% static '/svg/' %}{{ language.svg }}" />
-                                <div class="progress-bar">
-                                    <div class="bar" data-size="{{ language.expertise_level }}">
-                                    <span class="perc"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                </div> 
-            </div>
-        </div>
     </div>
+
+    <div class="skills-container">
+        {% include 'partials/skill-bars.html' %}
+    </div>
+
 </div>
+
 
 
 {% endblock %}

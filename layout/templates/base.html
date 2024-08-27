@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Portfolio Website{% endblock %}</title>
-    <link rel="icon" type="favicon.ico" href="static/img/favicon.ico">
+    <link rel="icon" type="favicon.ico" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Libre Franklin' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -19,10 +19,11 @@ body {
 }
 </style>
 <body >
+
     <header>
       <nav class="primary-color navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="ml-3 d-flex flex-row w-100 justify-content-center align-content-center page-title navbar-brand text-light align-items-center" href="#"> <img class="mr-2 justify-content-center align-items-center d-flex" title="favicon" height="48" width="48" src="{% static '/img/favicon.ico' %}"/>FACUNDO DUEÑAS</a>
+          <a class="ml-3 d-flex flex-row w-100 justify-content-center align-content-center page-title navbar-brand text-light align-items-center" href="/"> <img class="mr-2 justify-content-center align-items-center d-flex" title="favicon" height="48" width="48" src="{% static '/img/favicon.ico' %}"/>FACUNDO DUEÑAS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 
           </button>
@@ -33,11 +34,12 @@ body {
                 <a class="btn navbar-button-hover border-rounded px-2 nav-link primary-color" href="#skill-list">Skills</a>
                 <a class="btn navbar-button-hover border-rounded px-2 nav-link primary-color" href="#bottom_footer">Links</a>
               {% else %}
-                <a class="btn navbar-button-hover border-rounded px-2 nav-link primary-color" id="home" aria-current="" href="/">Home</a>
+                <a class="btn navbar-button-hover border-rounded px-2 nav-link primary-color" id="home" aria-current="" href="#">Project</a>
                 <a class="btn navbar-button-hover border-rounded px-2 nav-link primary-color" href="#bottom_footer">Links</a>
               {% endif %}
             </div>
         </div>
+        <div id="loading-bar"></div>
       </nav>
     </header>
     <a id="top_button" href="#" class="">
@@ -64,15 +66,10 @@ body {
     </div>
 
     
-    <script src="{% static 'connecting_dots.js' %}"></script>
     <script src="{% static 'go_top.js' %}"></script>
     <script src="{% static 'htmx.min.js' %}"></script>
-    <script src="{% static 'animate_text.js' %}"></script>
-    <script src="{% static 'animate_cards.js' %}"></script>
-    <script src="{% static 'animate_bars.js' %}"></script>
-    <script src="{% static 'scroll_images.js' %}"></script>
     <script src="{% static 'functions.js' %}"></script>
     <script src="{% static 'zoom.js' %}"></script>
 </body>
-</html>
 
+</html>

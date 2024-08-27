@@ -14,21 +14,25 @@ def home(request):
         'languages': all_languages,
         'images': all_images
     }
-
     return render(request, 'home.html', context=context)
-
 
 def search_language(request):
     language = request.POST.get('search')
+    user_state = request.user.is_superuser
+    
+    # Check if the language exists and is valid
     if language:
-        results = Project.objects.filter(languages__pk__in=[language]).order_by('title')
-
+        try:
+            language = int(language)  # Ensure it's an integer
+            results = Project.objects.filter(languages__pk__in=[language]).order_by('title')
+        except ValueError:
+            results = Project.get_all_projects()  # Fallback to all projects if there's an issue with language
     else:
         results = Project.get_all_projects()
 
     context = {
-        'results': results
-    }  
+        'results': results,
+        'user_state': user_state
+    }
 
     return render(request, 'partials/search-results.html', context)
-

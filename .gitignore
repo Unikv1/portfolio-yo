@@ -6,3 +6,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+static/
+fly.toml
+.git/
+*.sqlite3
+media/
+.terraform

@@ -1,51 +1,32 @@
-
 {% load static %}
 
 {% if results %}
-    <form>  
-        <div id="projectCardAnimation" class="project-div row d-flex flex-wrap justify-content-center">
-            {% for project in results %}
-            {% csrf_token %}
-                <div id="projectCard" class="project-card col-3 card m-2">
-                    <a href="/project/{{project.id}}" style="cursor: pointer;"><img class="card-button-1 white-filter" title="" height="24" width="24" src="{% static '/svg/box-arrow-up-right.svg' %}" /></a>
-                    <img class="card-img-top pb-2" src="{{ 'media/images/project_'}}{{project.id}}_01.jpg" onerror="handleImageError(this, '{% static '/svg/placeholder.svg' %}')"/>
-                    <div class="project-icons">
-
+    <div id="projectCardAnimation" class="projects-grid">
+        {% for project in results %}
+            <a href="project/{{project.id}}" style="text-decoration: none;">
+                <div class="project-card" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6) 50%), url('{{ project.get_images_for_project }}');">
+                    <div class="project-languages">
                         {% for language in project.languages.all %}
-                            <img class="ml-2" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
+                            <img class="language-icon" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
                         {% endfor %}
                     </div>
-
-                    <div class="card-body">
-                        <p class="card-title pt-0 mt-0 justify-content-start align-items-end d-flex" > {{ project.title }}</p>
-                        <p class="card-text h-100"> {{ project.description }} </p>
-                        
+                    <div class="project-content">
+                        <div class="project-title">
+                            {{ project.title }}
+                        </div>
+                        <div class="project-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel in ullam dignissimos laborum suscipit, fugiat ipsum rem at reprehenderit. Qui consequuntur cupiditate neque. Illo quae omnis quis, incidunt eum asperiores non fugit totam reprehenderit tenetur ullam nisi provident! Consequuntur error quisquam praesentium? Sequi obcaecati adipisci esse dolor atque quam velit!
+                        </div>
                     </div>
                 </div>
-            {% endfor %}
-            <div id="projectCard" class="project-card-2 secondary-color col-3 card m-2">
-                <img class="card-button-2 white-filter" title="" height="64" width="64" src="{% static '/svg/file-plus.svg' %}" />
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="row-12">
-                    <br>
-                    <br>
-                </div>
-            </div>
-
-        </div>
-        
-    </form>
-{% elif results.count == 0 %}
-    <div class="text-center">
-        <p> No projects found </p>
+            </a>
+        {% endfor %}
     </div>
 {% endif %}
 
 <script>
-    function handleImageError(image, placeholderSrc) {
-        image.onerror = null;
-        image.src = placeholderSrc;
-    }
+  function handleImageError(image, placeholderSrc) {
+    image.onerror = null
+    image.src = placeholderSrc
+  }
 </script>
-    

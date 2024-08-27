@@ -1,0 +1,15 @@
+{% load static %}
+<div id="skills_executer" class="skill-container">
+    <div class="skill-content">
+        {% for language in languages.all %}
+            <div class="skill-row">
+                <img class="m-3" title="{{ language.name }}"  src="{% static '/svg/' %}{{ language.svg }}" />
+                <div class="progress-bar">
+                    <div class="bar" data-size="{{ language.expertise_level }}">
+                    <span class="perc"></span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
