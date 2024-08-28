@@ -7,7 +7,7 @@
                 <div class="project-card" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6) 50%), url('{{ project.get_images_for_project }}');">
                     <div class="project-languages">
                         {% for language in project.languages.all %}
-                            <img class="language-icon" title="{{ language.name }}" height="30" width="30" src="{% static '/svg/' %}{{ language.svg }}" />
+                            <img class="language-icon" title="{{ language.name }}" height="32" width="32" src="{% static '/svg/' %}{{ language.svg }}" />
                         {% endfor %}
                     </div>
                     <div class="project-content">
@@ -15,7 +15,7 @@
                             {{ project.title }}
                         </div>
                         <div class="project-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel in ullam dignissimos laborum suscipit, fugiat ipsum rem at reprehenderit. Qui consequuntur cupiditate neque. Illo quae omnis quis, incidunt eum asperiores non fugit totam reprehenderit tenetur ullam nisi provident! Consequuntur error quisquam praesentium? Sequi obcaecati adipisci esse dolor atque quam velit!
+                            {{ project.description|safe }}
                         </div>
                     </div>
                 </div>

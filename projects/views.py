@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import user_passes_test
 from projects.models import Project, Image, Languages
 
 from projects.forms import ProjectForm
+
 # Create your views here.
 
 def view_project(request, project_id):
@@ -11,13 +12,13 @@ def view_project(request, project_id):
     images = Image.objects.filter(project=project)  # Assuming you have a related_name set for images
     image_urls = [image.image.url for image in images]  # Get the URLs instead of paths
     first_image = image_urls[0] if image_urls else None
-    
-    print(image_urls)
-
+    description = str(project.description).replace("\\n", "\n")
     context = {
         'project': project,
         'images': image_urls,
-        'first_image': first_image
+        'first_image': first_image,
+        'test': description
+        
     }
     return render(request, 'view-project.html', context)
 
@@ -31,6 +32,8 @@ def add_project(request):
     
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
+        if not request.FILES.getlist('images'):
+            return render(request, 'add-project.html', {'form': form, 'svgs': svgs, 'error': 'Please upload at least one image.'})
         if form.is_valid():
             project = form.save()
             

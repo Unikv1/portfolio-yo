@@ -1,5 +1,6 @@
 from django import forms
 from projects.models import Project
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 class ProjectForm(forms.ModelForm):
     class Meta:
@@ -11,6 +12,6 @@ class ProjectForm(forms.ModelForm):
         ]
         widgets = {
             "title": forms.TextInput(attrs={"placeholder": "Title..."}),
-            "description": forms.TextInput(attrs={"placeholder": "Description..."}),
+            "description": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}, config_name="description"),
             "languages": forms.CheckboxSelectMultiple(),
         }
