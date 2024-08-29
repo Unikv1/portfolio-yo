@@ -1,27 +1,26 @@
 {% load static %}
 
 {% if results %}
-    <div id="projectCardAnimation" class="projects-grid">
-        {% for project in results %}
-            <a href="project/{{project.id}}" style="text-decoration: none;">
-                <div class="project-card" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6) 50%), url('{{ project.get_images_for_project }}');">
-                    <div class="project-languages">
-                        {% for language in project.languages.all %}
-                            <img class="language-icon" title="{{ language.name }}" height="32" width="32" src="{% static '/svg/' %}{{ language.svg }}" />
-                        {% endfor %}
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">
-                            {{ project.title }}
-                        </div>
-                        <div class="project-description">
-                            {{ project.description|safe }}
-                        </div>
-                    </div>
+<div id="projectCardAnimation" class="projects-grid">
+    {% for project in results %}
+        <div id="project_executer" data-size="{{ forloop.counter }}" class="project-card" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.6) 50%), url('{{ project.get_images_for_project }}'); border-radius: 8px;">
+            <div class="project-content">
+                <div class="project-languages">
+                    {% for language in project.languages.all|dictsort:"name" %}
+                        <img class="language-icon" title="{{ language.name }}" height="32" width="32" src="{% static '/svg/' %}{{ language.svg }}" />
+                    {% endfor %}
                 </div>
-            </a>
-        {% endfor %}
-    </div>
+                <div class="project-title">
+                    {{ project.title }}
+                </div>
+                <div class="project-description" style="text-decoration: none; color: #fff;">
+                    {{ project.description|safe }}
+                </div>
+                <a class="btn learn-more" href="/project/{{ project.id }}">Go to project</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endif %}
 
 <script>

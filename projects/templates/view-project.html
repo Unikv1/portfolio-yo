@@ -16,7 +16,6 @@
 </div>
 <div id="project-container" class="view-project-container">
     <div class="view-project-content">
-
         <div class="view-project-image">
             <img style="cursor: pointer;" src="{{ first_image }}" alt="" onclick="displayImageFullscreen(this)">
             <div id="image_buttons_2" class="project-big-image-carousel">
@@ -27,15 +26,17 @@
                 {% endfor %}
             </div>
         </div>
-
+        <div class="project-languages-view">
+            {% for language in project.languages.all|dictsort:"name" %}
+                <img class="language-icon" title="{{ language.name }}" height="32" width="32" src="{% static '/svg/' %}{{ language.svg }}" />
+            {% endfor %}
+        </div>
         <div class="view-project-title">
             {{ project.title }}
         </div>
-
         <div class="view-project-description">
             {{ project.description|safe }}
         </div>
-
     </div>
 </div>
 

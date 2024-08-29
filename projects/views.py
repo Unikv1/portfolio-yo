@@ -9,8 +9,8 @@ from projects.forms import ProjectForm
 
 def view_project(request, project_id):
     project = get_object_or_404(Project, id=project_id)
-    images = Image.objects.filter(project=project)  # Assuming you have a related_name set for images
-    image_urls = [image.image.url for image in images]  # Get the URLs instead of paths
+    images = Image.objects.filter(project=project) 
+    image_urls = [image.image.url for image in images] 
     first_image = image_urls[0] if image_urls else None
     description = str(project.description).replace("\\n", "\n")
     context = {
@@ -37,14 +37,11 @@ def add_project(request):
         if form.is_valid():
             project = form.save()
             
-            # Handle file uploads
             for image in request.FILES.getlist('images'):
                 Image.objects.create(project=project, image=image)
             
-            # Handle selected languages (checkboxes)
             selected_languages = request.POST.getlist('languages')
             for language_id in selected_languages:
-                # Assuming you have a ManyToManyField for languages in your Project model
                 language = Languages.objects.get(id=language_id)
                 project.languages.add(language)
             
@@ -53,3 +50,31 @@ def add_project(request):
         form = ProjectForm()
     
     return render(request, 'add-project.html', {'form': form, 'svgs': svgs})
+
+
+@superuser_required
+def edit_project(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    svgs = Languages.get_all_languages()
+    
+    if request.method == "POST":
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        
+        if form.is_valid():
+            form.save()
+
+            if request.FILES.getlist('images'):
+                for image in request.FILES.getlist('images'):
+                    Image.objects.create(project=project, image=image)
+            
+            selected_languages = request.POST.getlist('languages')
+            project.languages.clear()
+            for language_id in selected_languages:
+                language = Languages.objects.get(id=language_id)
+                project.languages.add(language)
+            
+            return render(request, 'edit-project.html', {'form': form, 'success': True, 'svgs': svgs, 'project': project})
+    else:
+        form = ProjectForm(instance=project)
+    
+    return render(request, 'edit-project.html', {'form': form, 'svgs': svgs, 'project': project})
