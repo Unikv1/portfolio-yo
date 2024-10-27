@@ -1,4 +1,5 @@
 from django.urls import path
+from django.core.management import call_command
 from layout import views
 from layout.views import base, home
 

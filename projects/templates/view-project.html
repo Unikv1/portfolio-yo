@@ -2,40 +2,33 @@
 {% load static %}
 {% block content %}
 
-<div id="fullscreen_container" class="image-fullscreen-view ">
-    <div class="fullscreen-image ">
-        <img id="project-image-displayed-fullscreen" class="project-image justify-content-center"  src="{{ first_image }}">         
-    </div>   
-    <div id="image_buttons_2" class="project-big-image-carousel-fullscreen">
-        {% for image in images %}
-            <div style="cursor: pointer;">
-                <img class="project-image-list-item" src="{{ image }}" onclick="displayImageFullscreen(this)">
-            </div>
-        {% endfor %}
+<div id="fullscreen_container" class="fullscreen--view-project--container hidden">
+    <div class="fullscreen--view-project--box">
+        <img id="project-image-displayed-fullscreen" class="fullscreen--box-image" src="{{images.0}}"/>
     </div>
 </div>
-<div id="project-container" class="view-project-container">
-    <div class="view-project-content">
-        <div class="view-project-image">
-            <img style="cursor: pointer;" src="{{ first_image }}" alt="" onclick="displayImageFullscreen(this)">
-            <div id="image_buttons_2" class="project-big-image-carousel">
+
+
+<div class="view-project--container">
+    <div class="view-project--box">
+        <div class="view-project--box--image">
+            <img class="box-image" src="{{images.0}}" onclick="displayImageFullscreen(this)"/>
+            <div class="view-project--box--image--carousel">
                 {% for image in images %}
-                    <div style="cursor: pointer;">
-                        <img class="project-image-list-item" src="{{ image }}" onclick="displayImage(this)">
-                    </div>
+                    <li class="item"><img class="item-content" src="{{image}}" onclick="displayImage(this)"/></li>
                 {% endfor %}
             </div>
         </div>
-        <div class="project-languages-view">
+        <div class="view-project--box--languages">
             {% for language in project.languages.all|dictsort:"name" %}
-                <img class="language-icon" title="{{ language.name }}" height="32" width="32" src="{% static '/svg/' %}{{ language.svg }}" />
+                <img class="language-icon" title="{{ language.name }}" height="48" width="48" src="{% static '/svg/' %}{{ language.svg }}" />
             {% endfor %}
         </div>
-        <div class="view-project-title">
-            {{ project.title }}
+        <div class="view-project--box--title">
+            {{project.title}}
         </div>
-        <div class="view-project-description">
-            {{ project.description|safe }}
+        <div class="view-project--box--description">
+            {{project.description|safe}}
         </div>
     </div>
 </div>
@@ -45,34 +38,5 @@
         <img class="svg-hover m-1 white-filter" width="32" height="32" src="{% static 'svg/arrow-left.svg' %}" alt="Go back"/>
     </a>
 </div>
-
-<style>
-    .view-project-image {
-        position: relative;
-        z-index: 1;
-    }
-
-    .view-project-image::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: var(--bg-image, url('{{ first_image|safe }}'));
-        background-size: cover;
-        background-position: center;
-        filter: blur(5px);
-        z-index: -1;
-    }
-
-    .view-project-image img {
-        position: relative;
-        z-index: 2;
-        width: 80%;
-        object-fit: contain;
-    }
-</style>
-
 
 {% endblock %}
