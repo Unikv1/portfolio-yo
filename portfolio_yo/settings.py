@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -114,8 +114,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Only needed for production
+STATIC_ROOT = '/home/your-username/your-project-name/static'  # Only needed for production
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Ensure your static files folder is correctly referenced
 
 MEDIA_URL = '/media/'
@@ -226,6 +225,8 @@ CKEDITOR_5_CONFIGS = {
         'width': '100%',
     }
 }
+
+ALLOWED_HOSTS = ['unikv.pythonanywhere.com']
 
 SUPERUSER_USERNAME = os.getenv("DJANGO_SUPERUSER_USERNAME")
 SUPERUSER_EMAIL = os.getenv("DJANGO_SUPERUSER_EMAIL")
