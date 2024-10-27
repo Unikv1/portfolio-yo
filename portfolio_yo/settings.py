@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -226,7 +226,7 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
-ALLOWED_HOSTS = ['unikv.pythonanywhere.com']
+# ALLOWED_HOSTS = ['unikv.pythonanywhere.com']
 
 SUPERUSER_USERNAME = os.getenv("DJANGO_SUPERUSER_USERNAME")
 SUPERUSER_EMAIL = os.getenv("DJANGO_SUPERUSER_EMAIL")
