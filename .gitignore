@@ -12,3 +12,4 @@ fly.toml
 *.sqlite3
 media/
 .terraform
+staticfiles/

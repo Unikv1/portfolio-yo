@@ -1,28 +1,31 @@
-ARG PYTHON_VERSION=3.12-slim-bullseye
+FROM python:3.10
 
-FROM python:${PYTHON_VERSION}
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# Set work directory
+WORKDIR /app
 
-# install psycopg2 dependencies.
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
+    postgresql-client \
     libpq-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /code
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-WORKDIR /code
+# Copy project files
+COPY . .
 
-COPY requirements.txt /tmp/requirements.txt
-RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
-COPY . /code
-RUN python ./manage.py createsuperuser --noinput; exit 0
+# Create and set a non-root user
+RUN useradd -m myuser && chown -R myuser:myuser /app
+# RUN python manage.py migrate
+# RUN python manage.py collectstatic --noinput
+USER myuser
 
-EXPOSE 8000
-
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "portfolio_yo.wsgi"]
+# Run gunicorn
+CMD gunicorn portfolio_yo.wsgi:application --bind 0.0.0.0:8000
